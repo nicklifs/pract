@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html> 
+<head> 
+<!--meta charset="UTF-8"--> 
+<style type="text/css">
+div {
+	width: 662px;
+	height: 441px;
+	margin: auto;
+	overflow: hidden;
+}
+ul {
+	width: 750px;
+	background: #F3E9E0;
+	overflow: hidden;
+	
+	padding: 0;
+	margin: -44px 0 -25px 0;
+}
+li {
+	float: left;	/*alignment and wrapping*/
+	list-style: none;	
+	border-top: 1px solid #C6B6AE;
+	padding: 43px 52px 25px 0;
+	height: 185px; 	
+}
+li img {
+	display: block;
+	width: 158px;
+	height: 139px;
+	border: 1px solid #D8C8BA;
+	border-left: 0px;
+	background: #EDE1CE;
+	padding: 13px;
+	margin: -2px -13px;
+	margin-bottom: 4px;
+}
+a{
+	display: block;
+	border: 1px solid #D8C8BA;
+	border-top: 0px;  
+	background: #f6eee2;
+	padding: 2px 13px;
+	padding-bottom: 4px;
+	font-size: 10.4px;
+	font-family: Arial;
+	//line-height: 1.6;
+	width: 158px;
+	
+	
+	text-overflow: ellipsis; /* add an ellipsis */
+	white-space: nowrap; /* Do not carry lines */
+	overflow: hidden; /* cut off contents */
+	//-ms-text-overflow:ellipsis;
+	//-o-text-overflow:ellipsis;
+	//word-wrap: normal; /* for IE */ 
+	//word-wrap: break-word;
+	
+}
+a:hover{
+	position: relative; 
+	white-space: normal;
+}
+</style>
+</head> 
+<body> 
+<div>
+	<ul>
+		<li><a><img src="1.jpg" />Название товара</a></li>
+		<li><a><img src="1.jpg" />Очень длинное название товара, которое не вмещается в одну строчку и обрезается многотичием</a></li>
+		<li><a><img src="1.jpg" />Длинное название товара, которое не вмещается в одну строчку и обрезается многотичием</a></li>
+		<li><a><img src="1.jpg" />Ещё одно название товара</a></li>
+		<li><a><img src="1.jpg" />Предпоследний товар в списке</a></li>
+		<li><a><img src="1.jpg" />Последний товар в списке</a></li>		
+	</ul>
+</div>	
+</body> 
+</html>
