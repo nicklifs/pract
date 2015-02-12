@@ -1,0 +1,117 @@
+<!DOCTYPE HTML >
+<html> 
+<head> 
+<title>template</title>
+<meta charset="UTF-8"> 
+<style type="text/css">
+html{ width:100%; height:100%}
+body{
+	margin:0;
+	min-width: 600px;
+	height: 100%;
+	background:url(img/bg_line.gif) repeat-y 20px top;
+}
+.wrapper{
+	min-width:600px;
+	padding:0 20px;
+	min-height:100%;
+	height:100%;
+	background:url(img/bg_line2.gif) repeat-y right 10px
+}
+
+
+/* header */
+.header_wrapper{
+	padding-top: 20px;
+	background:#ffffff;		/* paint over white background */
+}
+.header {
+	height:55px;
+	border:3px solid #db8650;
+}
+
+
+/* main content */
+.content{
+	padding: 0px 60px;		/*	indent: left, right - 60px; */
+	margin-left: 120px;		/* move the block to the right  for text*/
+}
+.sidebar{
+	position: absolute;
+	width: 120px;
+	margin-left: -170px;
+}
+
+
+/* footer */
+.footer_wrapper{
+	min-width:600px;
+	padding:0 20px 20px;
+	height:107px;
+	margin-top:-127px;		/* shift up footer	*/
+	background:#ffffff;		/* paint over white background */
+}
+.footer{
+	height:41px;
+	border:3px solid #aa80a4;
+}
+
+
+/*  drawing elements: bg_line3.gif, c_tl.gif, c_bl.gif */
+.decor_t{
+	height:58px;
+	background:#fff url(img/bg_line3.gif) repeat-x 67px 9px;
+	text-align:right
+}
+.decor_b{
+	height:60px;
+	background:#fff url(img/bg_line3.gif) repeat-x -4px 25px;
+	text-align:right
+}
+.decor_t .inner{
+	height:50px;
+	padding-top:8px;
+	background:url(img/c_tl.gif) no-repeat left bottom
+}
+.decor_b .inner{
+	height:50px;
+	padding-bottom:10px;	
+	background:url(img/c_bl.gif) no-repeat left 0
+}
+</style>
+
+</head> 
+<body> 
+
+<div class="wrapper">
+    <!-- header -->
+    <div class="header_wrapper">
+		<div class="header">&nbsp;<br></div>
+          <div class="decor_t">
+			<div class="inner">
+				<img src="img/c_r.gif" alt=""> 
+			</div>
+		</div>
+    </div>
+	
+    <!-- content -->
+    <div class="content">
+		<div class="sidebar"> 	</div>	<!-- sidebar -->
+		
+	</div>
+</div>
+
+<!-- footer -->
+<div class="footer_wrapper">
+        <div class="decor_b">	
+			<div class="inner">
+				<img src="img/c_r.gif" alt="">
+			</div>
+		</div>
+        <div class="footer">
+		
+		</div>
+</div>
+
+</body> 
+</html>
