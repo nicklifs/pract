@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>player</title>
+	
+	<script>
+		/* press play / pause button */
+		function PlayPause() { 
+			var mediaPlayer = document.getElementById("video"); 
+			var bpp = document.getElementById("play-pause-button"); 
+	
+			if (mediaPlayer.paused || mediaPlayer.ended) {
+				bpp.className = 'pause';
+				mediaPlayer.play();
+			}
+			else {
+				bpp.className = 'play';
+				mediaPlayer.pause();
+			}
+		} 
+		/* change volume*/
+		function Volume(num) { 
+			var mediaPlayer = document.getElementById("video");
+			var v = document.getElementById("volume_wrap");
+			
+			if ((v.children[0].className == "muteOFF") && (num==0)) 
+			{	
+				mediaPlayer.volume = 1;
+				num = 5;
+			}
+			
+			if (num==0)	/*sound off*/
+			{
+				v.children[0].className = "muteOFF";
+				for(var i=1; i<6; i++) 
+					v.children[i].className = "volOFF vol";
+			}
+			else
+			{
+				v.children[0].className = "muteON";
+				for(var i=0; i<num; i++) 
+					v.children[i+1].className = "volON vol";
+				for(var i=num; i<5; i++) 
+					v.children[i+1].className = "volOFF vol";
+			}
+			mediaPlayer.volume = 0.2 * num;		
+		}
+		
+		/* press  prev / next button  - change currentTime*/
+		function Duration(num){
+			var mediaPlayer = document.getElementById("video");
+			mediaPlayer.currentTime += num;
+			update();
+		}
+		
+		/* press  FullScreen button */
+		function Full(){
+			var mediaPlayer = document.getElementById("video");
+			
+			if (mediaPlayer.requestFullscreen) {
+				mediaPlayer.requestFullscreen();
+			}else if (mediaPlayer.msRequestFullscreen) {
+				mediaPlayer.msRequestFullscreen();
+			} else if (mediaPlayer.mozRequestFullScreen) {
+				mediaPlayer.mozRequestFullScreen();
+			} else if (mediaPlayer.webkitRequestFullscreen) {
+				mediaPlayer.webkitRequestFullscreen();
+			
+			}
+		}
+		
+		/* update currentTime video, buffering, position of slider  */
+		function update(){
+			var mediaPlayer = document.getElementById("video"); 
+			
+			var startBuf = mediaPlayer.buffered.start(0);
+			var endBuf = mediaPlayer.buffered.end(0);
+			var currentTime = mediaPlayer.currentTime;
+			var duration = mediaPlayer.duration;
+			
+			var sliderPos = (currentTime / duration) * 100 - 0.5;
+			if (sliderPos < 0) sliderPos = 0;
+			
+			var bufStartProc = startBuf / duration * 100;	/* in % */
+			var bufEndProc = endBuf / duration * 100;		/* in % */
+			
+			//alert("currentTime: " + currentTime + "		duration: " + duration + " 	startBuf: " + startBuf + "	endBuf : " + endBuf);
+			
+			document.getElementById('trackBUF').setAttribute('style', 
+			'background: red; position: relative; top: 1px; height: 1px; width:'+(bufEndProc - bufStartProc)+'%; left: ' +bufStartProc +'%;');
+			
+			document.getElementById('trackPlay').setAttribute('style', 
+			'background: green; height: 1px; position: relative; width:'+sliderPos+'%;');
+			
+			document.getElementById('slider').setAttribute('style', 
+			'width: 3px; height: 3px; border: 2px solid #fff; border-radius: 50%; position: absolute;	background: #000; top: -2px; left: '+sliderPos+'%;');
+		}
+		/*every 1000 milliseconds to execute a function update()*/
+		setInterval('update()', 1000);
+	</script>
+	
+	<style type="text/css">
+	.video_wrap{
+		margin: 0 auto;
+		width: 640px; 
+		height: 360px; 
+	}
+	/*=========================================================*/
+	.control_wrap{
+		width: 100%;
+		height: 37px;
+		
+		top: -41px;
+		content: '';
+		display: block;
+		position: relative;
+		//background:rgba(34, 45, 67, 0.5);
+		background: linear-gradient(to bottom, rgba(43, 59, 82, 0.5), rgba(43, 59, 82, 0.7) );
+	}
+	/*=========================================================*/	
+	.track{
+		position: relative;
+		top: 1px;
+		height: 3px;
+		background: #261f27;
+	}
+	/*=========================================================*/
+	.volume_wrap{
+		height: 22px;
+		margin-left: 10px;
+		margin-top: 6px;
+		float: left;
+	}
+	
+	.muteON{
+		background-image: url(soundON.png);
+		width: 10px;
+		height: 10px;
+		display: block;
+		position: absolute;
+		z-index: 1000;
+		top: 9px;
+	}
+	
+	.muteOFF{
+		background-image: url(soundOFF.png);
+		width: 10px;
+		height: 10px;
+		display: block;
+		position: absolute;
+		z-index: 1000;
+		top: 9px;
+	}
+	
+	.vol {
+		display:inline-block;
+		vertical-align: bottom; /* bottom aligment */
+		
+		width: 2px;
+		margin-right: -2px;
+		margin-left: -1px;
+		
+		border-radius: 15%;
+		border: 2px solid #111c2b;
+		background:	#132237;
+	}
+	
+	#bvol1 { height: 4px; }
+	#bvol2 { height: 6px; }
+	#bvol3 { height: 10px; }
+	#bvol4 { height: 14px; }
+	#bvol5 { height: 18px; }
+	
+	.volON{	background:	white; }
+	.volOFF{ background:	#132237 }
+	/*=========================================================*/
+	.center_wrap{
+		width: 15%;
+		margin: 0 auto;
+		padding-top:4px;
+		
+		height: 37px;	
+	}
+	
+	#prev{
+		float:left;
+		width: 21px;
+		height: 21px;
+		
+		margin: 1px 6px;
+		border-radius: 50%;
+		border: 2px solid #0d1524;
+		
+		position: relative;
+		
+		//background: #455067;
+		background: linear-gradient(to bottom, #667085, #1b2539 );		/* CSS3 */
+	}
+	#prev:after{
+		/*draw play 1*/
+		width: 0;
+		height: 0;
+		border-top: 4px solid transparent;
+		border-right: 8px solid #fff;
+		border-bottom: 4px solid transparent;
+		top: 7px;
+		left: 3px;
+		display: block;
+		position: absolute;
+		z-index: 99;
+		content: '';
+	}
+	#prev:before{
+		/*draw play 2*/
+		width: 0;
+		height: 0;
+		border-top: 4px solid transparent;
+		border-right: 8px solid #fff;
+		border-bottom: 4px solid transparent;
+		top: 7px;
+		left: 8px;
+		display: block;
+		position: absolute;
+		z-index: 99;
+		content: '';
+	}
+	
+	#next{
+		float: right;
+		width: 21px;
+		height: 21px;
+		
+		position: relative;
+		top: -29px;
+		
+		margin: 1px 6px;
+		border-radius: 50%;
+		border: 2px solid #0d1524;
+		
+		//background: #455067;
+		background: linear-gradient(to bottom, #667085, #1b2539 );		/* CSS3 */
+	}
+	#next:after{
+		/*draw play 1*/
+		width: 0;
+		height: 0;
+		border-top: 4px solid transparent;
+		border-left: 8px solid #fff;
+		border-bottom: 4px solid transparent;
+		top: 7px;
+		left: 5px;
+		display: block;
+		position: absolute;
+		z-index: 99;
+		content: '';
+	}
+	#next:before{
+		/*draw play 2*/
+		width: 0;
+		height: 0;
+		border-top: 4px solid transparent;
+		border-left: 8px solid #fff;
+		border-bottom: 4px solid transparent;
+		top: 7px;
+		left: 10px;
+		display: block;
+		position: absolute;
+		z-index: 99;
+		content: '';
+	}
+	
+	#play-pause-button{
+		margin: 0 auto;
+		align: center;
+		width: 25px;
+		height: 25px;
+		border-radius: 50%;
+		border: 2px solid #0d1524;
+		display: block;
+		position: relative;
+		top: -1px;
+		content: '';
+		//background: #455067;
+		background: linear-gradient(to bottom, #667085, #1b2539 );		/* CSS3 */
+	}
+	.play:after{
+		/*draw play*/
+		width: 0;
+		height: 0;
+		border-top: 5px solid transparent;
+		border-left: 10px solid #fff;
+		border-bottom: 5px solid transparent;
+		top: 8px;
+		left: 9px;
+		display: block;
+		position: absolute;
+		z-index: 99;
+		content: '';
+	}
+	
+	.pause:after{
+		/*draw pause(left)*/
+		width: 3px;
+		height: 10px;
+		background: white;
+		top: 8px;
+		left: 9px;
+		display: block;
+		position: absolute;
+		z-index: 99;
+		content: '';
+	}
+	
+	.pause:before{
+		/*draw pause(right)*/
+		width: 3px;
+		height: 10px;
+		background: white;
+		top: 8px;
+		left: 14px;
+		display: block;
+		position: absolute;
+		z-index: 100;
+		content: '';
+	}
+	/*=========================================================*/
+	.fullscreen{
+		width: 16px;
+		height: 16px;
+		float:right;
+		border: 2px solid #0d1524;
+		margin-right: 10px;
+		margin-top: 6px;
+
+		border-radius: 15%;
+		position: relative;
+		
+		background: linear-gradient(to bottom, #667085, #1b2539 );		/* CSS3 */
+	}
+	.fullscreen:after{
+		background-image: url(full.png);
+		width: 16px;
+		height: 16px;
+		display: block;
+		position: absolute;
+		content: '';
+	}
+	</style>
+</head>
+<body>
+	<div class="video_wrap">
+		<video id="video" src="video.mp4" width="640" height="360">
+			К сожалению, ваш браузер не поддерживает HTML5 Video.		
+		</video>
+		
+		<div class="control_wrap">
+			<div class='track' > 
+				<div id='trackBUF' class='trackBUF' > </div>
+				<div id='trackPlay' class='trackPlay' > </div>
+				<div id='slider' class='slider' > </div>
+			<div>
+		
+			<div id="volume_wrap" class='volume_wrap' >
+				<div id='bvol0' class='muteON' onclick='Volume(0);'> </div>
+				<div id='bvol1' class='volON vol' onclick='Volume(1);'> </div>
+				<div id='bvol2' class='volON vol' onclick='Volume(2);'> </div>
+				<div id='bvol3' class='volON vol' onclick='Volume(3);'> </div>
+				<div id='bvol4' class='volON vol' onclick='Volume(4);'> </div>
+				<div id='bvol5' class='volON vol' onclick='Volume(5);'> </div>
+			</div>	
+			
+			<div class='fullscreen' onclick='Full();'>
+			</div>
+			
+			<div class='center_wrap' >
+				<div id='prev'  onclick='Duration(-10);'></div>	
+				<div id='play-pause-button' class='play' onclick='PlayPause();'></div>	
+				<div id='next'  onclick='Duration(10);'></div>	
+			</div>	
+		</div>
+	</div>
+</body>
+</html>
