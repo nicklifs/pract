@@ -1,0 +1,152 @@
+
+/*load a specific font helvetica*/
+@font-face {
+    font-family: helvetica; 
+    src: url(font/helvetica.ttf),
+    src: url(font/helvetica.woff); 
+}   
+
+html {    
+    height: 100%; 
+	background: url(img/back.png);	
+}   
+ 
+body {
+    line-height: 1;
+    height: 100%;
+}
+
+.login {
+	position: relative;
+    left: 50%;
+    top: 50%;
+    margin-left: -168px;
+    margin-top: -115px; 
+	
+	padding-left: 65px;
+    width: 270px;
+    height: 230px;
+    background: url(img/logo.png) top left no-repeat;
+    font-family: helvetica;
+    color: #7c7c7c;
+    text-shadow: 0 1px 0 #fff; 
+}
+/*==============		HEADER 			=============*/
+h1 {
+    margin: 0;
+    font:inherit; 
+	font-size: 30px;
+}
+	
+span{
+    font-size: 15px;
+}
+
+/* hr line top */
+.top-line {
+    border-top: 1px solid #898b8a;
+    color: #fff;
+}
+/*==========================================*/
+
+.input-wrapp {
+    width: 100%;
+    height: 35px;
+    line-height: 33px;
+    border: 1px solid #e0e3e3;
+    box-shadow: 0 1px 0 #ced0d0;
+    background-color: #f0f1f1;
+	margin-bottom: 10px;
+}   
+ 
+.input-text {
+    width: 95%;
+    padding-left: 5%;
+    font-size: 15px;
+    line-height: 33px;
+    border: none;
+
+    background-color: #f0f0f0;
+	text-shadow: 0 1px 0 #fff; 
+	margin: 0;
+}
+	
+/* block for checkbox */	
+.checkbox-wrap {
+	top: 5px;
+    position: relative;
+    display: inline-block;
+	left: 2px;
+    width: 8px;
+    height: 12px;
+    vertical-align: middle;    
+    background-color: #e8e9e9;
+	box-shadow: -1px -1px 0 #bcbdbd,
+                 inset 1px  1px 0 #d9dada;
+}
+
+/* checkbox (hidden)*/	
+#checkbox {
+	position: relative;
+    left: -4px;
+	   
+    visibility: hidden; 
+	background-color: #e8e9e9;
+}
+
+ /* label "Remember Me" for checkbox */
+label {
+    cursor: pointer;
+	position: relative;
+	top: 6px;
+	font-size: 12px;
+}   
+
+/*	reset and submit button*/
+.button {
+    height: 30px;
+    border: 1px solid #e0e3e3;
+    background: -moz-linear-gradient(top, #f1f1f1 0%, #dddedf 100%);
+    background: -webkit-linear-gradient(top, #f1f1f1 0%,#dddedf 100%);
+    font-family: helvetica;
+	font-size: 13px;
+    color: #7c7c7c;
+    text-shadow: 0 1px 0 #fff;
+    box-shadow: 0 1px 0 #ced0d0;
+    cursor: pointer;
+	
+	float:right;
+	margin-left: 15px;
+	margin-bottom: 10px;
+} 
+
+/* hr line bottom */
+.bottom-line {
+	clear: both;
+    border-top: 1px solid #c2c3c2;
+    color: #fff;
+}    
+
+/*================		FOOTER		==============*/
+footer div {
+	cursor: pointer;
+	float: right;
+	height: 13px;
+	margin-left: 8px;
+}
+
+.facebook{
+	background: url(img/f.png);
+	width: 6px;
+}
+
+.twitter{
+	background: url(img/t.png);
+	width: 9px;
+}
+
+.googlePlus{
+	background: url(img/G.png);
+	width: 12px;
+}
+ /*=====================================================*/
