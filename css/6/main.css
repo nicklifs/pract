@@ -1,0 +1,179 @@
+html{
+	background:#fff;
+	font:11px 'Lucida Sans Unicode',arial, sans-serif;
+}
+
+body{
+	width:620px;
+	height:310px;
+	margin:0 auto;
+	padding-top:40px;
+	background:-moz-linear-gradient(top,  rgb(224,218,215) 0%, rgb(255,247,246) 100%); 		/* FF3.6+ */
+	background:-webkit-linear-gradient(top,  rgb(224,218,215) 0%,rgb(255,247,246) 100%); 	/* Chrome10+,Safari5.1+ */
+	background:-o-linear-gradient(top,  rgb(224,218,215) 0%,rgb(255,247,246) 100%); 		/* Opera 11.10+ */
+	background:-ms-linear-gradient(top,  rgb(224,218,215) 0%,rgb(255,247,246) 100%); 		/* IE10+ */
+	background:linear-gradient(to bottom,  rgb(224,218,215) 0%,rgb(255,247,246) 100%); 		/* W3C */
+}
+
+.cart_button{
+	position:relative;
+	width:42px;
+	height:42px;
+	margin:0 auto;
+	border-radius:50%;
+	background:#e54040 url(img/cart.png) center no-repeat;
+	box-shadow:rgba(0,0,0,0.5) 0 0 5px inset;
+	/* track property - track background-color		
+		time delay animation - 0,1s 	
+		linear - same speed from start to finish.*/ 
+	-webkit-transition:background-color linear .1s;
+    -moz-transition:background-color linear .1s;
+    -o-transition:background-color linear .1s;
+	-ms-transition: background-color linear .1s;
+    transition:background-color linear .1s;
+}
+
+.cart_button:hover{
+	cursor:pointer;
+	background-color:#c62727;
+}
+
+.widget{
+	display:none;
+	cursor:default; 	
+	position:absolute;
+	top:75px;
+	left:-92px;
+	width:186px;
+	height:145px;
+	padding:0 20px;
+	border:1px solid #cbcbcb;
+}
+
+/* when you hover the button opens a widget*/
+.cart_button:hover .widget{
+	display:block;
+	background:#fff;
+	box-shadow:rgba(0,0,0,0.2) 0 0 3px;
+	border-radius:4px;
+}
+
+/*	area for go down to widget - hidden area */
+.widget:before{
+	position:absolute;
+	content:'';
+	width:100%;
+	height:40px;
+	top:-40px;
+}
+
+/* draw triangle(top) */
+.widget:after{
+	position:absolute;
+	content:'';
+	left:104px;
+	top:-9px;
+	width:16px;
+	height:16px;
+	border-right:1px solid #cbcbcb;
+	border-top:1px solid #cbcbcb;
+	background:#fbfbfb;
+	box-shadow:rgba(0,0,0,0.2) 0 0 3px;
+	-webkit-transform:rotate(-45deg);
+    -moz-transform:rotate(-45deg);
+    -o-transform:rotate(-45deg);
+    -ms-transform:rotate(-45deg);
+    transform:rotate(-45deg);
+}
+
+.widget_title{
+	position:absolute;
+	left:0;
+	top:0;
+	width:100%;
+	height:29px;
+	background:-moz-linear-gradient(top,  rgb(251,251,251) 0%, rgb(231,231,231) 100%); /* FF3.6+ */
+	background:-webkit-linear-gradient(top,  rgb(251,251,251) 0%,rgb(231,231,231) 100%); /* Chrome10+,Safari5.1+ */
+	background:-o-linear-gradient(top,  rgb(251,251,251) 0%,rgb(231,231,231) 100%); /* Opera 11.10+ */
+	background:-ms-linear-gradient(top,  rgb(251,251,251) 0%,rgb(231,231,231) 100%); /* IE10+ */
+	background:linear-gradient(to bottom,  rgb(251,251,251) 0%,rgb(231,231,231) 100%); /* W3C */
+	z-index:1;
+	border-radius:4px 4px 0 0;
+	border-bottom:1px solid #d5d5d5;
+}
+
+/* draw line in center */
+.widget_title:after{
+	position:absolute;
+	content:'';
+	left:8px;
+	top:85px;
+	width:205px;
+	height:2px;
+	background:-moz-linear-gradient(left,  rgba(245,245,245,0.7) 0%, rgba(221,221,221,0.7) 50%, rgba(245,245,245,0.7) 100%); /* FF3.6+ */
+	background:-webkit-linear-gradient(left,  rgba(245,245,245,0.7) 0%,rgba(221,221,221,0.7) 50%,rgba(245,245,245,0.7) 100%); /* Chrome10+,Safari5.1+ */
+	background:-o-linear-gradient(left,  rgba(245,245,245,0.7) 0%,rgba(221,221,221,0.7) 50%,rgba(245,245,245,0.7) 100%); /* Opera 11.10+ */
+	background:-ms-linear-gradient(left,  rgba(245,245,245,0.7) 0%,rgba(221,221,221,0.7) 50%,rgba(245,245,245,0.7) 100%); /* IE10+ */
+	background:linear-gradient(to right,  rgba(245,245,245,0.7) 0%,rgba(221,221,221,0.7) 50%,rgba(245,245,245,0.7) 100%); /* W3C */
+}
+
+/*	write title text in widget*/
+.widget_title span{
+	padding:0 20px;
+	font:11px/29px 'Lucida Sans Unicode';
+	color:#747474;
+	text-shadow:rgba(255,255,255,0.75) 0 1px 0;
+}
+
+/* find sibling element, find span before span in .widget_title */
+.widget_title span+span{
+	float:right;
+}
+
+/* for all child span in .widget (child elements, not all ) ... */
+.widget>span{
+	display:block;
+	width:49%;
+	margin-top:30px;
+	float:left;
+	font:bold 20px/57px Arial;	
+	color:#4d4d4d;
+}
+
+/* find sibling element, find span before span in .widget */
+.widget>span+span{
+	color:#e54040;
+	float:right;
+	margin-right:-3px;
+}
+
+.widget a{
+	position:relative;
+	color:#e54040;
+	text-decoration:none;
+	font:12px/57px 'Lucida Sans Unicode';
+}
+
+.widget a:hover{
+	cursor: pointer;
+}
+
+button{
+	display:block;
+	cursor:pointer;
+	float:right;
+	border:1px solid #e06b6b;
+	border-radius:2px;
+	width:76px;
+	height:23px;
+	margin-top:16px;
+	padding-bottom:2px;
+	font:12px 'Lucida Sans Unicode';	
+	color:#fff;
+	text-shadow:rgba(0,0,0,0.15) 0 1px 0;
+	background:-moz-linear-gradient(top,  rgba(246,106,106,1) 0%, rgba(225,53,53,1) 100%); 		/* FF3.6+ */
+	background:-webkit-linear-gradient(top,  rgba(246,106,106,1) 0%,rgba(225,53,53,1) 100%); 	/* Chrome10+,Safari5.1+ */
+	background:-o-linear-gradient(top,  rgba(246,106,106,1) 0%,rgba(225,53,53,1) 100%); 		/* Opera 11.10+ */
+	background:-ms-linear-gradient(top,  rgba(246,106,106,1) 0%,rgba(225,53,53,1) 100%); 		/* IE10+ */
+	background:linear-gradient(to bottom,  rgba(246,106,106,1) 0%,rgba(225,53,53,1) 100%); 		/* W3C */
+}
