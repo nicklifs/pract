@@ -1,0 +1,205 @@
+body{
+	background:#fff;
+	font:13px tahoma, arial, sans-serif;
+}
+
+#container{
+	width:400px;
+	height:270px;
+	margin:0 auto;	/* centered */
+	padding-top:30px;
+	background:url(img/bg.png);
+}
+
+nav{
+	width:200px;
+	margin:0 auto;	/* centered menu */
+	border:1px solid #25272b;
+	border-radius:3px;
+	box-shadow:	rgba(0,0,0,0.2) 0 0 3px, 
+				rgba(0,0,0,0.05) 1px 1px 0,
+				rgba(0,0,0,0.05) 0px 2px 0;
+}
+
+/* for single item menu*/
+nav ul li a{
+	display:block;
+	height:40px;
+	line-height:40px;
+	padding-left:40px;	/*for text*/
+	text-decoration:none;
+	color:#d6d9e5;
+}
+
+ul{
+	list-style: none; 
+	margin: 0; 
+	padding: 0; 
+}
+
+/* for main menu */
+nav ul li{
+	background: -webkit-linear-gradient(top,  rgba(75,78,88,1) 0%,rgba(63,66,74,1) 100%); 	/* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(75,78,88,1) 0%,rgba(63,66,74,1) 100%); 		/* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(75,78,88,1) 0%,rgba(63,66,74,1) 100%); 		/* IE10+ */
+	background: linear-gradient(to bottom,  rgba(75,78,88,1) 0%,rgba(63,66,74,1) 100%); 	/* W3C */
+	box-shadow: rgba(255,255,255,0.08) 1px 1px 0 inset;
+	border-bottom:#292b30 1px solid;
+}
+
+/* load icon in home*/
+li.home:before{
+	//display:block;
+	height:20px;
+	width: 20px;
+	position:absolute;
+	background:url(img/home.png)  no-repeat;
+	top: 12px;
+	left: 10px;
+	content: '';
+	z-index:1;
+}
+
+/* load icon(light bulbs) in home right*/
+li.home:after{
+	//display:block;
+	height:27px;
+	width: 27px;
+	position:absolute;
+	background:url(img/lamp.png)  no-repeat;
+	top: 16px;
+	left: 180px;
+	content: '';
+	z-index:1;
+}
+
+/* load icon gallery*/
+li.gallery:before{
+	//display:block;
+	height:20px;
+	width: 20px;
+	position:absolute;
+	background:url(img/gallery.png)  no-repeat;
+	top: 12px;
+	left: 10px;
+	content: '';
+	z-index:1;
+}
+
+/* load icon in gallery right*/
+li.gallery:after{
+	//display:block;
+	height:20px;
+	width: 20px;
+	position:absolute;
+	background:url(img/gallery_down.png)  no-repeat;
+	top: 16px;
+	left: 178px;
+	content: '';
+	z-index:1;
+}
+/* load icon logout*/
+li.logout:before{
+	//display:block;
+	height:30px;
+	width: 30px;
+	position:absolute;
+	background:url(img/clock.png)  no-repeat;
+	top: 12px;
+	left: 10px;
+	content: '';
+	z-index:1;
+}
+
+/* shadow in item 'gallery' */
+li.gallery{
+	position:relative;
+}
+
+/* border(down) in item 'logout' */
+li.logout{
+	border-bottom: 1px solid rgba(255,255,255,0.05); 
+	position:relative;
+}
+
+/*apply styles submenu gallery*/
+.gallery-wrapper ul li{
+	position:relative;
+	background:#32353b;
+	box-shadow:#3a3c42 0 1px 0 inset;
+}
+
+/*load icon submenu gallery */
+.gallery-wrapper ul a:before{
+	//display:block;
+	height:30px;
+	width: 30px;
+	position:absolute;
+	background:url(img/inner.png)  no-repeat;
+	top: 17px;
+	left: 17px;
+	content: '';
+	z-index:1;
+}
+
+/*	info of transition*/
+.gallery-wrapper{
+	height:41px;
+	overflow:hidden;
+	-webkit-transition:height linear .3s;
+    -moz-transition:height linear .3s;
+    -o-transition:height linear .3s;
+    transition:height linear .3s;
+}
+
+/* height submenu gallery */
+.gallery-wrapper:hover{
+	height:164px;
+}
+
+/* draw shadow up first li in .gallery-wrapper ul*/
+.gallery-wrapper ul li:nth-of-type(1){
+	box-shadow:rgba(0,0,0,0.1) 0 2px 2px inset;
+}
+/* draw shadow up second li in .gallery-wrapper ul*/
+.gallery-wrapper ul li:nth-of-type(2){
+	box-shadow:none;
+}
+/* draw shadow down last li in .gallery-wrapper ul*/
+.gallery-wrapper ul li:nth-of-type(3){
+	box-shadow:rgba(0,0,0,0.1) 0 -2px 2px inset;
+}
+
+/* when you hover on gallery subitem*/
+.gallery-wrapper ul li:hover{
+	background: #3254c9;
+	box-shadow:#5173d5 1px 1px 0 inset;
+}
+/*load icon active item of submenu gallery*/
+.gallery-wrapper ul li:hover:after{
+	height:30px;
+	width: 30px;
+	position:absolute;
+	background:url(img/inner2.png)  no-repeat;
+	top: 17px;
+	left: 17px;
+	content: '';
+	z-index:10;
+}
+
+.home {
+	position:relative;
+	border-radius:3px 3px 0 0;
+}
+
+.logout{
+	border-radius:0 0 3px 3px;
+}
+
+.home span{
+	position:absolute;
+	right:23px;
+	top:12px;
+	color:#d9ddea;
+	text-shadow:rgba(0,0,0,0.25) 0 1px 0;
+}
