@@ -1,0 +1,85 @@
+ul { 	margin: 0; 		padding: 0; }
+
+/* Desktops and laptops min-width >= 400px */
+@media only screen and (min-width : 400px) {
+	.wrapper {
+		width: 300px;
+		height: 200px;
+		margin: 50px auto;
+		background: #eceff1;
+	}
+
+	ul.menu {
+		width: 150px;
+		margin: 0 auto;
+		background: #fff;
+		border: solid 1px #d8d8d8;
+		box-shadow: 0 1px 3px 0 rbga(0, 0, 0, .05);
+	}
+
+	ul.menu li {
+		display: list-item;
+		list-style: none;
+	}
+
+	ul.menu a {
+		width: 114px;
+		padding: 11px 0 11px 36px;
+		height: 14px;
+		display: block;
+		text-decoration: none;
+		color: #7f8c8d;
+		font: 14px/100% "Arial", Verdana, sans-serif;
+		border-bottom: solid 1px #f0f0f0;
+	}
+
+	ul.menu a:first-child:after { 	content: "Profil"; 		}
+	ul.menu a:nth-child(2):after { 	content: "Messages"; 	}
+	ul.menu a:nth-child(3):after {	content: "Contacts";	}
+	ul.menu a:nth-child(4):after {	content: "Portfolio";	}
+	ul.menu a:nth-child(5):after {	content: "CSS-live";	}
+}
+
+/* for Mobile  max-width <= 399px*/
+@media only screen and (max-width: 399px) {
+	.wrapper {
+		width: 90%;
+		margin: 20px auto;
+		background: #eceff1;
+	}
+
+	ul.menu {
+		width: 36px;
+		margin: 0 auto;
+		background: #fff;
+		border: solid 1px #d8d8d8;
+		box-shadow: 0 1px 3px 0 rbga(0, 0, 0, .05);
+	}
+
+	ul.menu li {
+		display: list-item;
+		list-style: none;
+	}
+
+	ul.menu a {
+		height: 14px;
+		padding: 11px 0 11px 36px;
+		display: block;
+		text-decoration: none;
+		border-bottom: solid 1px #f0f0f0;
+	}
+}
+
+ul.menu a:last-child { 	border-bottom: none;	}
+
+ul.menu a:nth-child(1) { 		background: url("img/1.png") no-repeat 10px 10px, #fff;		}
+ul.menu a:nth-child(2) {		background: url("img/2.png") no-repeat 10px 12px, #fff;		}
+ul.menu a:nth-child(3) {		background: url("img/3.png") no-repeat 10px 10px, #fff;		}
+ul.menu a:nth-child(4) {		background: url("img/4.png") no-repeat 10px 10px, #fff;		}
+ul.menu a:nth-child(5) {		background: url("img/5.png") no-repeat 10px 10px, #fff;		}
+
+ul.menu a:nth-child(1):hover { 	background: url("img/1h.png") no-repeat 10px 10px,  #fafafa; 	}
+ul.menu a:nth-child(2):hover {	background: url("img/2h.png") no-repeat 10px 12px,  #fafafa;	}
+ul.menu a:nth-child(3):hover {	background: url("img/3h.png") no-repeat 10px 10px,  #fafafa;	}
+ul.menu a:nth-child(4):hover {	background: url("img/4h.png") no-repeat 10px 10px,  #fafafa;	}
+ul.menu a:nth-child(5):hover {	background: url("img/5h.png") no-repeat 10px 10px,  #fafafa;	}
