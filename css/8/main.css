@@ -83,3 +83,43 @@ ul.menu a:nth-child(2):hover {	background: url("img/2h.png") no-repeat 10px 12px
 ul.menu a:nth-child(3):hover {	background: url("img/3h.png") no-repeat 10px 10px,  #fafafa;	}
 ul.menu a:nth-child(4):hover {	background: url("img/4h.png") no-repeat 10px 10px,  #fafafa;	}
 ul.menu a:nth-child(5):hover {	background: url("img/5h.png") no-repeat 10px 10px,  #fafafa;	}
+
+/* anivation hover links*/
+a:hover {
+	-webkit-animation-name: flash;
+    -moz-animation-name: flash;
+    -o-animation-name: flash;
+    animation-name: flash;
+    /* Задержка перед началом */
+    -webkit-animation-delay: 0s;
+    -moz-animation-delay: 0s;
+    -o-animation-delay: 0s;
+    animation-delay: 0s;
+    /* Продолжительность анимации */
+    -webkit-animation-duration: 2s;
+    -moz-animation-duration: 2s;
+    -o-animation-duration: 2s;
+    animation-duration: 2s;
+	
+	//animation-iteration-count:1;
+}
+
+/*	animation frames */
+@-webkit-keyframes flash {
+    0%{opacity: 1; transform:rotate(0deg);} 
+    50% {opacity: 0.1; 	transform:rotate(180deg);}
+	100% {opacity: 1; transform:rotate(360deg);} 
+}
+@-moz-keyframes flash {
+    0%, 100% {opacity: 1;} 
+    50% {opacity: 0;}
+}
+@-o-keyframes flash {
+    0%, 100% {opacity: 1;} 
+    50% {opacity: 0;}
+}
+@keyframes flash {
+    0%, 100% {opacity: 1;} 
+    50% {opacity: 0.5;}
+}
+
