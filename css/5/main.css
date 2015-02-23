@@ -1,4 +1,3 @@
-
 /*load a specific font helvetica*/
 @font-face {
     font-family: helvetica; 
@@ -14,7 +13,14 @@ html {
 body {
     line-height: 1;
     height: 100%;
+	color: #7c7c7c;
 }
+
+.shadow{
+	display:inline-block;
+	filter: progid:DXImageTransform.Microsoft.Shadow(Color=white, Strength=1, Direction=180);
+}
+
 
 .login {
 	position: relative;
@@ -29,10 +35,12 @@ body {
     background: url(img/logo.png) top left no-repeat;
     font-family: helvetica;
     color: #7c7c7c;
-    text-shadow: 0 1px 0 #fff; 
+    text-shadow: 0 1px 0 #fff;
+	behavior: url(PIE-1.0.0/PIE.htc);	
 }
 /*==============		HEADER 			=============*/
-h1 {
+.h1{
+	display:block;
     margin: 0;
     font:inherit; 
 	font-size: 30px;
@@ -41,6 +49,7 @@ h1 {
 span{
     font-size: 15px;
 }
+
 
 /* hr line top */
 .top-line {
@@ -52,11 +61,12 @@ span{
 .input-wrapp {
     width: 100%;
     height: 35px;
-    line-height: 33px;
+    line-height: 35px;
     border: 1px solid #e0e3e3;
     box-shadow: 0 1px 0 #ced0d0;
     background-color: #f0f1f1;
 	margin-bottom: 10px;
+	behavior: url(PIE-1.0.0/PIE.htc);
 }   
  
 .input-text {
@@ -64,10 +74,12 @@ span{
     padding-left: 5%;
     font-size: 15px;
     line-height: 33px;
+	height: 33px; 
     border: none;
+	color: #c3c5c5;
 
     background-color: #f0f0f0;
-	text-shadow: 0 1px 0 #fff; 
+	text-shadow: 0 1px 0 #fff;
 	margin: 0;
 }
 	
@@ -83,6 +95,7 @@ span{
     background-color: #e8e9e9;
 	box-shadow: -1px -1px 0 #bcbdbd,
                  inset 1px  1px 0 #d9dada;
+	behavior: url(PIE-1.0.0/PIE.htc);
 }
 
 /* checkbox (hidden)*/	
@@ -99,6 +112,7 @@ label {
     cursor: pointer;
 	position: relative;
 	top: 6px;
+	font-weight: none;
 	font-size: 12px;
 }   
 
@@ -112,13 +126,16 @@ label {
 	font-size: 13px;
     color: #7c7c7c;
     text-shadow: 0 1px 0 #fff;
-    box-shadow: 0 1px 0 #ced0d0;
+	box-shadow: 0 1px 0 #ced0d0;
+	behavior: url(PIE-1.0.0/PIE.htc);
     cursor: pointer;
 	
 	float:right;
 	margin-left: 15px;
 	margin-bottom: 10px;
 } 
+
+
 
 /* hr line bottom */
 .bottom-line {
@@ -128,7 +145,7 @@ label {
 }    
 
 /*================		FOOTER		==============*/
-footer div {
+.footer div {
 	cursor: pointer;
 	float: right;
 	height: 13px;

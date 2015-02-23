@@ -3,33 +3,48 @@
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="main.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<!--[if lt IE 10 ]>
+		<script src="jquery.placeholder.js"></script>
+		<script>
+			/* placeholder for ie 8,9 */
+			$(function() {
+				// Invoke the plugin
+				$('input, textarea').placeholder({customClass:'my-placeholder'});
+			});
+		</script>
+		<![endif]-->
 </head>
 <body>
 
     <div class="login">
-        <header>
-            <span>Already Member</span>
-            <h1>Login Hear</h1>
+        <div class="header">
+            <span class="shadow">Already Member</span>
+            <span  class="h1 shadow">Login Hear</span>
             <hr class="top-line">
-        </header>
+        </div>
         <form method="#" action="#">
-                <div class="input-wrapp">	<input type="text" class="input-text" placeholder="Email Address">	</div>
-                <div class="input-wrapp">	<input type="password" class="input-text" placeholder="Password">	</div>
+                <div class="input-wrapp">	
+					<input type="text" class="input-text" placeholder="Email Address">
+				</div>
+                <div class="input-wrapp">	
+					<input type="password" class="input-text" placeholder="Password">	
+				</div>
                 
 				<span class="checkbox-wrap">	
 					<input id="checkbox" type="checkbox">	
 				</span> 
-				<label for="checkbox">Remember Me</label>
+				<label class="shadow" for="checkbox">Remember Me</label>
 				
 			   
-                <button class="button">Reset</button>
-                <button class="button">Submit</button>
+                <button class="button">		<span class="shadow">Reset</span>	</button>
+                <button class="button">		<span class="shadow">Submit</span>	</button>
                 <hr class="bottom-line">
-            <footer>
+            <div class="footer">
 					<div class="googlePlus">	<a href="#" alt="google+"></a>		</div>
 					<div class="twitter"> 		<a href="#" alt="twitter"></a>		</div>
                     <div class="facebook"> 		<a href="#" alt="facebook"></a> 	</div>		
-            </footer>
+            </div>
         </form>
     </div>
 	
