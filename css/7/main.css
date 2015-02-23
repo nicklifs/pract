@@ -11,18 +11,19 @@ body{
 	background:url(img/bg.png);
 }
 
-nav{
+.nav{
 	width:200px;
 	margin:0 auto;	/* centered menu */
 	border:1px solid #25272b;
 	border-radius:3px;
-	box-shadow:	rgba(0,0,0,0.2) 0 0 3px, 
-				rgba(0,0,0,0.05) 1px 1px 0,
+	behavior: url(PIE-1.0.0/PIE.htc);
+	position:relative;
+	box-shadow:	rgba(0,0,0,0.05) 1px 1px 0,
 				rgba(0,0,0,0.05) 0px 2px 0;
 }
 
 /* for single item menu*/
-nav ul li a{
+.nav ul li a{
 	display:block;
 	height:40px;
 	line-height:40px;
@@ -38,7 +39,11 @@ ul{
 }
 
 /* for main menu */
-nav ul li{
+.nav ul li{
+	background: rgb(75,78,88);		/* if not load gradient*/
+	-pie-background: linear-gradient(top, rgba(75,78,88,1) 0%, rgba(63,66,74,1) 100%);	/*for ie 8,9 gradient*/
+	behavior: url(PIE-1.0.0/PIE.htc);
+	
 	background: -webkit-linear-gradient(top,  rgba(75,78,88,1) 0%,rgba(63,66,74,1) 100%); 	/* Chrome10+,Safari5.1+ */
 	background: -o-linear-gradient(top,  rgba(75,78,88,1) 0%,rgba(63,66,74,1) 100%); 		/* Opera 11.10+ */
 	background: -ms-linear-gradient(top,  rgba(75,78,88,1) 0%,rgba(63,66,74,1) 100%); 		/* IE10+ */
@@ -125,8 +130,9 @@ li.logout{
 /*apply styles submenu gallery*/
 .gallery-wrapper ul li{
 	position:relative;
-	background:#32353b;
-	box-shadow:#3a3c42 0 1px 0 inset;
+	background: #32353b !important;
+	box-shadow: #3a3c42 0 1px 0 inset;
+	behavior: url(PIE-1.0.0/PIE.htc);
 }
 
 /*load icon submenu gallery */
@@ -145,7 +151,8 @@ li.logout{
 /*	info of transition*/
 .gallery-wrapper{
 	height:41px;
-	overflow:hidden;
+	position:relative;
+	overflow: hidden;
 	-webkit-transition:height linear .3s;
     -moz-transition:height linear .3s;
     -o-transition:height linear .3s;
@@ -159,21 +166,25 @@ li.logout{
 
 /* draw shadow up first li in .gallery-wrapper ul*/
 .gallery-wrapper ul li:nth-of-type(1){
-	box-shadow:rgba(0,0,0,0.1) 0 2px 2px inset;
+	box-shadow: rgb(0,0,0,0.1) 0 2px 2px inset;
+	behavior: url(PIE-1.0.0/PIE.htc);
 }
 /* draw shadow up second li in .gallery-wrapper ul*/
 .gallery-wrapper ul li:nth-of-type(2){
 	box-shadow:none;
+	behavior: url(PIE-1.0.0/PIE.htc);
 }
 /* draw shadow down last li in .gallery-wrapper ul*/
 .gallery-wrapper ul li:nth-of-type(3){
 	box-shadow:rgba(0,0,0,0.1) 0 -2px 2px inset;
+	behavior: url(PIE-1.0.0/PIE.htc);
 }
 
 /* when you hover on gallery subitem*/
 .gallery-wrapper ul li:hover{
-	background: #3254c9;
+	background: #3254c9 !important;
 	box-shadow:#5173d5 1px 1px 0 inset;
+	behavior: url(PIE-1.0.0/PIE.htc);
 }
 /*load icon active item of submenu gallery*/
 .gallery-wrapper ul li:hover:after{
@@ -190,10 +201,12 @@ li.logout{
 .home {
 	position:relative;
 	border-radius:3px 3px 0 0;
+	behavior: url(PIE-1.0.0/PIE.htc);
 }
 
 .logout{
 	border-radius:0 0 3px 3px;
+	behavior: url(PIE-1.0.0/PIE.htc);
 }
 
 .home span{
