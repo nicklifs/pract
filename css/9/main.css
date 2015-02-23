@@ -1,0 +1,294 @@
+body{
+    background: #f7f7f7;
+    font-family:Arial; 
+}
+aside{
+    background:#fff;
+    display:block;
+    margin:120px auto;
+    height:195px;
+    width:515px;
+    border-radius:3px;
+    box-shadow: 0px 0px 5px 1px #cac8c8;
+}
+
+/*=====================	HEADER =========================*/
+header{
+    display: block;
+    position: relative;
+    padding: 20px 15px;
+    //height: 45px;
+	
+    border-bottom: 1px solid #e6e6e6;
+    box-shadow: inset 0 -1px 1px  #f4f4f4 ;
+}
+
+.user{
+    float:left;
+    width:	40px;
+	height: 40px;
+	margin-right: 15px;
+    border-radius:3px;
+    background: #c3c3c3;
+    background: linear-gradient(to bottom,  #c3c3c3 0%,#a0a0a0 100%);
+    box-shadow: inset 0px 0px 1px 1px #9b9b9b;
+}
+
+.user-icon{
+	padding: 13px;
+	color: #f0f0f0;
+}
+
+a{
+	display: inline-block;
+	margin-top: -1px;
+	text-decoration:none;
+}
+
+a:hover{
+	color: white;
+	text-decoration:none;
+}
+
+.email-icon{
+	color: #a6a6a6;
+	padding: 9px 10px;
+	border: 1px solid #cdcccc;
+	border-radius: 2px;
+	float:left;
+}
+
+.email-icon:hover{
+	color: #4d7a93;
+}
+		
+/*for text "@cssliveru" */
+strong{
+    color: #262626;
+	font-size:16px;
+}
+
+/*for text "HTML, CSS & JS"*/
+header>span{
+    color:#7b7b7b;
+    font-size:14px;
+    font-style:italic;
+}
+
+.contacts{
+    float:right;
+    margin: 7px 0px;
+}
+
+.follow-button{
+	margin: 0;
+    display:block;
+    float:right;
+	border: 1px solid #335b75;
+    border-radius:2px;
+    margin-left:15px;
+    text-decoration:none;
+    font-weight:bold;
+    width:100px;
+	height: 34px;
+    background: #4d7a93;
+    background: linear-gradient(to bottom,  #628ca3, #4d7a93);
+	 box-shadow: 0px 1px #779db0	inset;
+    text-shadow:0px 1px #325a74;
+   
+	color:#fff;
+}
+
+.follow-button:hover{
+	background: linear-gradient(to top,  #628ca3, #4d7a93);
+}
+
+.plus{
+	padding: 8px 10px;
+    float:left;
+}
+
+.follow{
+    font-size:14px;
+    float:right;
+    position:relative;
+	//margin-left: -10px;
+	padding-top: 6px;
+	font-weight: bold;
+	left: -10px;
+}
+
+/* draw | between "+" and "follow"	*/
+.follow:before{
+    content:"";
+    width:1px;
+    height:32px;
+    display:block;
+    position:absolute;
+	top:0;
+    left:-12px;
+	border-left: 1px solid #38617a;
+	box-shadow: 1px 0px #618ba2;
+}
+/*================================================================*/
+/*====================== CONTENT =================================*/
+
+/*============== image ================*/
+
+.content{
+    padding:15px 5px 10px 10px;
+}
+/* draw item in top image */
+.photo:before{
+    content:'';
+    position:absolute;
+    width: 27px;
+    height: 13px; 
+    top:-1px;
+    left: 45px;
+	background: url("img/top_tab.png") no-repeat;
+}
+
+/*draw background for zoom with 90%-opacity */
+.lupa {
+    position:absolute;
+    width: 25px;
+    height: 25px;
+    top:30px;
+    left:45px;
+	border: 1px solid #d6d6d6;
+	background: #fff;
+	opacity:0.9;
+	border-radius:50px;
+    box-shadow: 0px 0px 1px 1px #dddddd;	
+}
+
+/* draw icon zoom*/
+.lupa:after{
+	background: url("img/lupa.png") no-repeat;
+	position:absolute;
+	width: 11px;
+    height: 11px;
+	//border: 1px solid red;
+	top: 8px;
+	left: 7px;
+	content: "";
+}
+
+/* draw template for image */
+.photo{
+    float:left;
+    position:relative;
+    width:117px;
+    height:89px;
+    background: url("img/photoTemp.png") center center no-repeat;
+	padding: 8px 8px;
+}
+
+.content img{   
+    width:100%;
+	height:100%;
+}
+/*=====================================*/
+
+article{
+    float:right;
+    display:block;
+}
+
+.comment{
+    border-bottom:1px solid #e6e6e6;
+    width:360px;
+    padding-bottom:20px;
+}
+
+.comment span:nth-child(1){
+    color:#ababab;
+    font-size:10px;
+    font-weight:bold;
+	text-shadow:0px 1px #eaeaea;
+}
+
+.comment span:nth-child(2){
+    color: #000;
+    font-size:14px;
+	text-shadow:0px 1px #cfcfcf;
+}
+
+.share{
+	width: 28px;
+	height: 22px;
+	float: right;
+	display: block;
+	margin-right: 10px;
+	margin-top: -10px;
+	color: #7f7f7f;
+	font-size: 30px;
+}
+
+.share:hover{
+	color: #7f7f7f;
+}
+/*===========================================================*/
+/*========================= FOOTER ==========================*/
+
+footer{
+    font-size:11px;
+    padding-top:10px;
+    display:block;
+	
+	font-style:italic;
+    font-weight:bold;
+	color: #b5b5b5;
+	position: relative;
+}
+
+.img_posted{
+	display: inline-block;
+	background: url("img/posted.png") 0 -1px no-repeat;
+	padding-left: 20px;
+	padding-right: 5px;
+	margin-left: 2px;
+
+	float: left;
+}
+
+footer a{
+	 text-decoration: underline;
+}
+
+footer a:hover{
+	color: #8c8c8c;
+}
+
+/* for text "California" */
+footer a{
+    color:#848484;
+    margin-right:10px;
+}
+
+.clock{
+	display: inline-block;
+	vertical-align: top;
+}
+
+
+.glyphicon-comment{
+	color:#7195a9;
+	font-size: 14px;
+	padding-right: 5px;
+}
+
+/*for count coments*/
+.COUNT{
+	color:#797979;
+    margin-left:35px;
+	margin-right:15px;
+	font-style: normal;
+	float:right;
+	vertical-align: top;
+}
+
+
+
+
