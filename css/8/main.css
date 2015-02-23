@@ -86,16 +86,16 @@ ul.menu a:nth-child(5):hover {	background: url("img/5h.png") no-repeat 10px 10px
 
 /* anivation hover links*/
 a:hover {
-	-webkit-animation-name: flash;
+    -webkit-animation-name: flash;
     -moz-animation-name: flash;
     -o-animation-name: flash;
     animation-name: flash;
-    /* Задержка перед началом */
+
     -webkit-animation-delay: 0s;
     -moz-animation-delay: 0s;
     -o-animation-delay: 0s;
     animation-delay: 0s;
-    /* Продолжительность анимации */
+
     -webkit-animation-duration: 2s;
     -moz-animation-duration: 2s;
     -o-animation-duration: 2s;
