@@ -5,10 +5,3 @@ $("#nav li").hover(
 	function () {    $(this).removeClass("hover");	$(this).find('ul').hide(); 	}
 );
 	
-//$("nav ul li").show(); 	
-
-	/*	function () {
-		alert('test');
-		$(this).addClass('hover');
-		//$(this).parent().next().removeClass('excerpt');
-	}*/
