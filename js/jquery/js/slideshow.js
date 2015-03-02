@@ -1,25 +1,26 @@
 /* CREATE SLIDESHOW */
 
-/* renove elem #slideshow to top (body) */
+/* move elem #slideshow to top (body) */
 $('#slideshow').prependTo('body');
 //$('#slideshow').attr('height','500px');
 
+var h = $('#slideshow li').height();
+$('#slideshow').height(h);
+
 /* hide all slides, show first*/
 $('#slideshow li').hide();
-$('#slideshow li:nth-child(1)').show();
+//$('#slideshow li:nth-child(1)').show();
 
 /* func for next slide */
-num = $('#slideshow li').size(), i = 2;
+num = $('#slideshow li').size(), i = 1;
+fun();
 function fun() {
+	$('#slideshow li:nth-child('+i+')').delay(200).fadeIn(2000); //.show()
+	$('#slideshow li').delay(4000).fadeOut(2000);//.hide(); 
 	
-	$('#slideshow li').hide(); 
-	//$('#slideshow li:nth-child('+i+')').animate({width:'toggle'},350);
-	$('#slideshow li:nth-child('+i+')').show();
 	i++;
 	if (i==num+1) i=1;
 }
 
-//$("#slideshow").animate({width:'toggle'},350);
-
 /* each 2s show next slide */
-setInterval(fun, 5000);
+setInterval(fun, 8000);
