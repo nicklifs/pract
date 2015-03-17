@@ -1,0 +1,385 @@
+--================== Основы выборки (оператор SELECT) =====================
+
+-- 1. Напишите запрос для отображения названия (first_name, last_name) используя алиасы “First Name", "Last Name".
+SELECT FIRST_NAME as 'FIRST NAME', LAST_NAME as 'LAST NAME'	
+FROM employees
+
+-- 2. Напишите запрос, чтобы получить уникальные идентификаторы отделов из таблицы employees.
+SELECT DISTINCT DEPARTMENT_ID 
+FROM employees 
+
+-- 3. Напишите запрос, чтобы получить все данные о сотрудниках из таблицы employees, отсортировав их по first name по убыванию.
+SELECT *
+FROM employees 
+ORDER BY FIRST_NAME DESC
+
+-- 4. Напишите запрос, чтобы получить имена (first_name, last_name), зараплату (salary), PF всех сотрудников 
+-- (таблица employees) (PF алиас, рассчитывается как 12% от заработной платы).
+SELECT FIRST_NAME, LAST_NAME, SALARY, (SALARY*0.12) AS PF
+FROM employees 
+
+-- 5. Напишите запрос, чтобы получить ID, имена (first_name, last_name), зарплату (salary) из таблицы сотрудников (employees)
+--  отсортированные по зарплате по возрастанию.
+SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME, SALARY
+FROM employees 
+ORDER BY SALARY
+
+-- 6. Напишите запрос, чтобы получить общую зарплату всех сотрудников.
+SELECT SUM(SALARY)
+FROM employees 
+
+-- 7. Напишите запрос, чтобы получить максимальную и минимальную зарплаты сотрудников.
+SELECT MIN(SALARY),  MAX(SALARY)
+FROM employees 
+
+-- 8. Напишите запрос, чтобы получить среднюю зарплату и количество всех сотрудников.
+SELECT AVG(SALARY),  COUNT(EMPLOYEE_ID)
+FROM employees 
+
+-- 9. Напишите запрос, чтобы получить количество всех сотрудников.
+SELECT COUNT(EMPLOYEE_ID)
+FROM employees 
+
+-- 10. Напишите запрос, чтобы получить количество рабочих мест (количество уникальных job_id) через таблицу сотрудников.
+SELECT COUNT(DISTINCT JOB_ID)
+FROM employees 
+
+-- 11. Напишите запрос, чтобы получить first_name всех сотрудников в верхнем регистре.
+SELECT UPPER(FIRST_NAME)
+FROM employees 
+
+-- 12. Напишите запрос, чтобы получить первые три символа first_name сотрудников.
+SELECT SUBSTR(FIRST_NAME,1,3)
+FROM employees 
+
+-- 13. Напишите запрос для расчета 171*214+625.
+SELECT 171*214+625
+
+-- 14. Напишите запрос, чтобы получить полное имя (first_name) и фамилию (last_name) 
+-- (например Петренко Андрей, Вовченко Ирина) сотрудников.
+SELECT CONCAT(LAST_NAME, ' ',FIRST_NAME)
+FROM employees 
+
+--=================== Ограничение и сортировка данных ===========================
+
+-- 1. Напишите запрос, чтобы получить имена (first_name, last_name)  и  зараплату (salary) 
+-- всех рабочих у которых зарплата не попадает в промежуток между 10000 и 15000.
+SELECT FIRST_NAME, LAST_NAME, SALARY
+FROM employees 
+WHERE SALARY NOT BETWEEN 10000 AND 15000;
+
+-- 2. Напишите запрос, чтобы получить имена (first_name, last_name)  и  department_id всех рабочих 
+-- у которых department_id или 30 или 100 и отсортировать по department_id по возрастанию.
+SELECT FIRST_NAME, LAST_NAME, DEPARTMENT_ID
+FROM employees 
+WHERE DEPARTMENT_ID IN (30,100)
+ORDER BY DEPARTMENT_ID
+
+-- 3. Напишите запрос, чтобы получить имена (first_name, last_name)  и  зараплату (salary) всех рабочих у 
+-- которых зарплата не попадает в промежуток между 10000 и 15000 и department_id или 30 или 100.
+SELECT FIRST_NAME, LAST_NAME, SALARY
+FROM employees 
+WHERE (DEPARTMENT_ID IN (30,100)) AND (SALARY NOT BETWEEN 10000 AND 15000);
+
+-- 4. Напишите запрос, чтобы получить имена (first_name, last_name)  и  дату наема (hire_date) всех сотрудников
+--  которые были наняты в 1987 году.
+SELECT FIRST_NAME, LAST_NAME, HIRE_DATE
+FROM employees 
+WHERE YEAR(HIRE_DATE) = 1987;
+
+-- 5. Напишите запрос, чтобы получить имя (first_name) всех сотрудников, которые имеют буквы «а» и «с» в своем имени.
+SELECT FIRST_NAME
+FROM employees 
+WHERE (LOCATE('a', FIRST_NAME) > 0) AND (LOCATE('c', FIRST_NAME) > 0) ;
+
+-- 6. Напишите запрос, чтобы получить фамилии (last_name), рабочие места (job_id) и зарплату (salary) все сотрудников 
+-- которые работают Программистами или Менеджерами и зарплата составляет 4500 или 10000 или 15000.
+SELECT LAST_NAME, SALARY, JOB_ID
+FROM employees 
+WHERE JOB_ID IN ('IT PROG', 'FI MGR', 'AC MGR', 'SA MAN', 'PU MAN', 'ST MAN', 'MK MAN') 
+				AND SALARY IN (4500, 10000, 15000);
+				
+-- 7. Напишите запрос, чтобы получить фамилии (last_name) сотрудников из шести букв.				
+SELECT LAST_NAME
+FROM employees 
+WHERE LENGTH(LAST_NAME) = 6;
+
+-- 8. Напишите запрос, чтобы получить фамилии (last_name) сотрудников из у которых третья буква «е».
+SELECT LAST_NAME
+FROM employees 
+WHERE SUBSTR(LAST_NAME,3,1) = 'e';
+
+-- 9. Выведите уникальные job_id из таблицы employees.
+SELECT DISTINCT JOB_ID
+FROM employees 
+
+--=============== Агрегирующие функции и группировка =======================
+
+-- 1. Выведите максимальную зарплату программистов.
+SELECT MAX(SALARY)
+FROM employees 
+WHERE JOB_ID = 'IT PROG'
+
+-- 2. Выведите среднюю зарплату и количество сотрудников у которых department_id = 90.
+SELECT AVG(SALARY), COUNT(*)
+FROM employees 
+WHERE DEPARTMENT_ID = 90;
+
+-- 3. Выберите наибольшую, наименьшую, среднюю и общую зарплату сотрудников.
+SELECT AVG(SALARY), MIN(SALARY),MAX(SALARY), SUM(SALARY)
+FROM employees 
+
+-- 4. Выберите количество сотрудников по каждому job_id.
+SELECT JOB_ID,COUNT(*)
+FROM employees 
+GROUP BY JOB_ID
+
+-- 5. Напишите запрос, чтобы получить разницу между максимальной и минимальной зарплатами.
+SELECT MAX(SALARY)-MIN(SALARY)
+FROM employees 
+
+-- 6. Напишите запрос, чтобы получить manager_id и наименьшую зарплату которую он платит сотрудникам.
+SELECT MANAGER_ID, MIN(SALARY)
+FROM employees 
+GROUP BY MANAGER_ID
+
+-- 7. Выберите общую зарплату по каждому department_id.
+SELECT DEPARTMENT_ID, SUM(SALARY)
+FROM employees 
+GROUP BY DEPARTMENT_ID
+
+-- 8. Выберите среднюю зарплату по каждому рабочему месту (job_id) исключая программистов.
+SELECT JOB_ID, AVG(SALARY)
+FROM employees 
+WHERE NOT JOB_ID = 'IT PROG'
+GROUP BY JOB_ID
+
+-- 9. Выберите наибольшую, наименьшую, среднюю и общую зарплату сотрудников по каждому рабочему 
+-- месту (job_id) у которых department_id = 90.
+SELECT JOB_ID, MAX(SALARY), MIN(SALARY), AVG(SALARY), SUM(SALARY)
+FROM employees 
+WHERE NOT DEPARTMENT_ID = 90
+GROUP BY JOB_ID
+
+-- 10. Выберите job_id и максимальную зарплату сотрудников у которых максимальная зарплата больше 4000.
+SELECT JOB_ID, MAX(SALARY) --?!!!!!
+FROM employees 
+WHERE SALARY > 4000
+GROUP BY JOB_ID
+
+-- 11. Напишите запрос, чтобы получить среднюю зарплату для всех отделов (job_id), у которых более 10 сотрудников.
+SELECT JOB_ID, AVG(SALARY)
+FROM employees 
+GROUP BY JOB_ID
+HAVING COUNT(*) > 10
+
+--====================== ПОДЗАПРОСЫ ==============================
+
+-- 1. Напишите запрос, чтобы найти имена (first_name, last_name) и зарплаты работников, имеющих более 
+-- высокую зарплату, чем у работника с фамилией last_name = 'Петренко'.
+SELECT FIRST_NAME, LAST_NAME, SALARY
+FROM employees 
+WHERE SALARY > (SELECT SALARY FROM employees WHERE LAST_NAME = 'Петренко')
+
+-- 2. Найти имена (first_name, last_name) всех сотрудников которые работает в IT-отделе (Отделы – таблица departments).
+SELECT FIRST_NAME, LAST_NAME
+FROM employees 
+WHERE DEPARTMENT_ID = (SELECT DEPARTMENT_ID FROM departments WHERE DEPARTMENT_NAME = 'IT')
+
+-- 3. Найти имена (first_name, last_name) всех сотрудников, у которых есть менеджер, который работает в отделе, базирующейся в 
+-- США (Местоположение – таблица locations).
+SELECT FIRST_NAME, LAST_NAME
+FROM employees 
+WHERE MANAGER_ID IN (	SELECT d.MANAGER_ID
+						FROM departments AS d, locations as l
+						WHERE d.LOCATION_ID = l.LOCATION_ID and l.COUNTRY_ID ='US' AND d.MANAGER_ID IS NOT NULL	 )
+ 
+-- 4. Найти имена (first_name, last_name) сотрудников-менеджеров.
+SELECT FIRST_NAME, LAST_NAME
+FROM employees 
+WHERE JOB_ID IN (	SELECT JOB_ID FROM jobs WHERE LOCATE('MANAGER', JOB_TITLE) > 0	 )
+ 
+-- 5. Найти имена (first_name, last_name), зарплату сотрудников, у которых зарплата больше, чем средняя зарплата по компании.
+SELECT FIRST_NAME, LAST_NAME, SALARY
+FROM employees 
+WHERE SALARY > (	SELECT AVG(SALARY) FROM employees )
+
+-- 6. Найти имена (first_name, last_name), зарплата сотрудников, у которых зарплата равна минимальной заработной плате для их 
+-- класса рабочих мест (классы рабочих мест – таблица jobs).
+SELECT FIRST_NAME, LAST_NAME, SALARY
+FROM employees 
+WHERE (SALARY,JOB_ID) IN (	SELECT MIN_SALARY, JOB_ID FROM jobs ) 
+
+-- 7. Найти имена (first_name, last_name), зараплату сотрудников, которые зарабатывают больше, чем средняя зарплата и которые 
+-- работают в любом из IT-подразделений.
+SELECT FIRST_NAME, LAST_NAME, SALARY
+FROM employees 
+WHERE SALARY > (SELECT AVG(SALARY) FROM employees) AND
+	  DEPARTMENT_ID IN (SELECT DEPARTMENT_ID FROM departments WHERE LOCATE('IT', BINARY DEPARTMENT_name) > 0 ) 
+
+-- 8. Найти имена (first_name, last_name) и зарплату сотрудников, которые зарабатывают больше, чем Петренко.
+SELECT FIRST_NAME, LAST_NAME, SALARY  --!!!!! without join
+FROM employees 
+WHERE SALARY > (SELECT SALARY FROM employees WHERE LAST_NAME = 'Петренко')
+
+-- 9. Найти имена (first_name, last_name) и зарплату сотрудников, получающих минимальную зарплату.
+SELECT FIRST_NAME, LAST_NAME, SALARY
+FROM employees 
+WHERE SALARY = (SELECT MIN(SALARY) FROM employees)
+
+-- 10. Найти имена (first_name, last_name) и зарплату сотрудников, чья зарплата превышает среднюю зараплату всех отделов.
+SELECT FIRST_NAME, LAST_NAME, SALARY
+FROM employees 
+WHERE SALARY > ALL(SELECT AVG(SALARY) FROM employees GROUP BY DEPARTMENT_ID)
+
+-- 11. Напишите запрос, чтобы найти имена (first_name, last_name) и зарплату сотрудников, у которых зарплата больше чем 
+-- зарплата всех клерков (job_id = 'SH_CLERK'). Отсортировать по зарплате по возрастанию.
+SELECT FIRST_NAME, LAST_NAME, SALARY
+FROM employees 
+WHERE SALARY > ALL(SELECT SALARY FROM employees WHERE JOB_ID = 'SH CLERK')
+ORDER BY SALARY
+
+-- 12. Напишите запрос, чтобы найти имена (first_name, last_name) своих сотрудников, которые не являются руководителями.
+SELECT FIRST_NAME, LAST_NAME
+FROM employees 
+WHERE JOB_ID IN (	SELECT JOB_ID FROM jobs
+						WHERE LOCATE('Clerk', JOB_TITLE) > 0 OR LOCATE('Assistant', JOB_TITLE) > 0 OR
+								LOCATE('Accountant', JOB_TITLE) > 0	OR  LOCATE('Public', JOB_TITLE) > 0	OR
+								LOCATE('Representative', JOB_TITLE) > 0 OR LOCATE('Programmer', JOB_TITLE) > 0	)
+
+-- 13. Напишите запрос для отображения ID сотрудника, имя, фамилию и названия отделов где работают сотрудники.								
+SELECT e.EMPLOYEE_ID, e.FIRST_NAME, e.LAST_NAME, d.DEPARTMENT_NAME
+FROM employees AS e, departments as d
+WHERE d.DEPARTMENT_ID = e.DEPARTMENT_ID and
+			JOB_ID IN (	SELECT JOB_ID FROM jobs
+						WHERE LOCATE('Clerk', JOB_TITLE) > 0 OR LOCATE('Assistant', JOB_TITLE) > 0 OR
+								LOCATE('Accountant', JOB_TITLE) > 0	OR  LOCATE('Public', JOB_TITLE) > 0	OR
+								LOCATE('Representative', JOB_TITLE) > 0 OR LOCATE('Programmer', JOB_TITLE) > 0	)
+
+-- 14. Напишите запрос для отображения ID сотрудника, имя, фамилии, зарплаты всех сотрудников у которых 
+-- зарплата выше среднего для их отделов.								
+SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME, SALARY
+FROM employees AS e
+WHERE SALARY > (	SELECT AVG(SALARY) 
+					FROM employees
+					WHERE JOB_ID = e.JOB_ID	)
+					
+--================================ JOIN ===================================
+
+-- 1. Напишите запрос, чтобы найти адреса (location_id, street_address, city, state_province, country_name) 
+--всех отделов.
+SELECT l.LOCATION_ID, d.DEPARTMENT_NAME, l.STREET_ADDRESS, l.CITY, l.STETE_PROVINCE, c.COUNTRY_NAME
+FROM departments AS d INNER JOIN locations as l INNER JOIN countries as c
+ON d.LOCATION_ID = l.LOCATION_ID and l.COUNTRY_ID = c.COUNTRY_ID
+
+-- 2. Напишите запрос, чтобы найти имена (first_name, last_name), идентификатор  и название отдела.
+SELECT e.LAST_NAME, e.FIRST_NAME, d.DEPARTMENT_ID, d.DEPARTMENT_NAME
+FROM departments AS d INNER JOIN employees as e
+ON d.DEPARTMENT_ID = e.DEPARTMENT_ID
+
+--3. Найти имена (first_name, last_name), должность (job_id), номер и название отдела сотрудников, 
+--которые работают в Лондоне.
+SELECT e.LAST_NAME, e.FIRST_NAME, d.DEPARTMENT_ID, d.DEPARTMENT_NAME, e.JOB_ID
+FROM employees as e INNER JOIN departments AS d INNER JOIN locations as l 
+ON d.DEPARTMENT_ID = e.DEPARTMENT_ID and d.LOCATION_ID = l.LOCATION_ID
+WHERE l.CITY = 'London'
+
+--4. Написать запрос, чтобы найти идентификаторы сотрудников, фамилии  (last_name) вместе с их manager_id 
+--и фамилией менеджера (last_name).
+SELECT e.FIRST_NAME, e.EMPLOYEE_ID, e.MANAGER_ID, e2.LAST_NAME
+FROM employees as e INNER JOIN employees AS e2 
+ON e.MANAGER_ID = e2.EMPLOYEE_ID 
+
+-- 5. Найти имена (first_name, last_name) и даты приема на работу сотрудников (hire_date), которые были 
+-- наняты после 'Петренко'.					
+SELECT e.FIRST_NAME, e.LAST_NAME, e.HIRE_DATE --?!!!!!! without join!!!!
+FROM employees as e 
+where e.HIRE_DATE > (SELECT HIRE_DATE FROM employees WHERE LAST_NAME = 'Kochhar')
+						
+-- 6. Напишите запрос, чтобы получить название отдела и количество сотрудников в отделе.
+SELECT d.DEPARTMENT_NAME, COUNT(*)
+FROM employees as e INNER JOIN departments AS d 
+ON e.DEPARTMENT_ID = d.DEPARTMENT_ID 
+GROUP BY e.DEPARTMENT_ID
+
+-- 7. Напишите запрос для вывода id отдела, название отдела и имя менеджера.
+SELECT d.DEPARTMENT_ID, d.DEPARTMENT_NAME, e.FIRST_NAME, d.MANAGER_ID
+FROM employees as e right JOIN departments AS d 
+ON e.EMPLOYEE_ID = d.MANAGER_ID
+
+-- 8. Напишите запрос для вывода название отдела, имя менеджера и город.
+SELECT  d.DEPARTMENT_NAME, e.FIRST_NAME, l.CITY
+FROM departments AS d
+		LEFT JOIN employees as e ON  d.MANAGER_ID = e.EMPLOYEE_ID 
+		INNER JOIN locations as l ON d.LOCATION_ID = l.LOCATION_ID
+		
+-- 9. Напишите запрос для вывода должности и среднего заработка работников.
+SELECT j.JOB_TITLE, AVG (e.SALARY)
+FROM employees AS e INNER JOIN jobs as j 
+	ON e.JOB_ID = j.JOB_ID
+GROUP BY j.JOB_TITLE	
+
+-- 10. Вывести должность, имя сотрудника и разницу между зарплатой сотрудника и 
+-- минимальной заработной платой на этой должности.
+SELECT e.FIRST_NAME, j.JOB_TITLE, e.SALARY - j.MIN_SALARY
+FROM employees AS e INNER JOIN jobs as j 
+	ON e.JOB_ID = j.JOB_ID
+
+-- 11. Напишите запрос который выводит название отдела, имени (first_name, last_name),дату приема 
+-- на работу (hire_date), зарплату руководителя для всех руководителей, чей опыт более чем 15 лет.
+SELECT d.DEPARTMENT_NAME, e.LAST_NAME, e.FIRST_NAME, e.HIRE_DATE, e.SALARY
+FROM employees as e right JOIN departments AS d 
+	ON e.EMPLOYEE_ID = d.MANAGER_ID
+WHERE DATE_SUB(now(),Interval 15 YEAR) > e.HIRE_DATE
+
+--============================== Дата и время ===============================
+
+-- 1. Напишите запрос для отображения первого дня месяца (в формате даты) за три месяца 
+-- до текущего месяца. Например: текущая дата: 2014-09-03, ожидаемый результат: 2014-06-01
+SELECT DATE_SUB( DATE_SUB(curdate(),Interval 3 MONTH), Interval DAY(curdate())-1 DAY)
+
+-- 2. Напишите запрос, чтобы получить всех сотрудников принятых на работу в понедельник.
+SELECT *
+FROM employees as e
+WHERE DAYNAME(e.HIRE_DATE) = 'Monday'
+
+-- 3. Напишите запрос, чтобы получить текущую дату в следующем формате. 
+-- Образец: Дата: 2014-09-04, На выходе: 4 сентября 2014
+--SET lc_time_names = 'ru_RU';
+--SELECT concat( day(CURDATE()), ' ', MONTHNAME(CURDATE()), ' ', YEAR (CURDATE())) AS 'CURRENT DATE';
+SELECT DATE_FORMAT(CURDATE(), '%d %M %Y') AS 'CURRENT DATE';
+
+-- 4. Напишите запрос, чтобы извлечь год от текущей даты.
+SELECT YEAR(CURDATE());
+
+-- 5. Напишите запрос, чтобы получить имя сотрудника и дату приема на работу, где дата 
+-- приема между '1987-06-01' и '1987-07-30'.
+SELECT e.FIRST_NAME, e.HIRE_DATE
+FROM employees as e
+WHERE e.HIRE_DATE between '1987-06-01' and '1987-07-30';
+
+-- 6. Напишите запрос, чтобы получить имя и фамилию сотрудника принятого на работу в июне месяце.
+SELECT e.FIRST_NAME, e.LAST_NAME, e.HIRE_DATE
+FROM employees as e
+WHERE MONTH(e.HIRE_DATE) = 6;
+
+-- 7. Напишите запрос, чтобы получить года в которые было принято на работу более 5 сотрудников.
+SELECT year(e.HIRE_DATE), count(*)
+FROM employees as e
+group by year(e.HIRE_DATE)
+having count(*) > 5
+
+-- 8. Напишите запрос, чтобы получить идентификатор отдела, год, и число сотрудников принятых на работу в этом году.
+SELECT e.DEPARTMENT_ID, year(e.HIRE_DATE), count(*)
+FROM employees as e inner JOIN departments AS d 
+	ON e.DEPARTMENT_ID = d.DEPARTMENT_ID
+group by (d.DEPARTMENT_ID)
+
+-- 9. Вывести название отдела, имя руководителя (менеджера), зарплату руководителя всех руководителей, 
+-- чей опыт работы более 5 лет.
+SELECT d.DEPARTMENT_NAME, e.FIRST_NAME, e.SALARY
+FROM employees as e right JOIN departments AS d 
+	ON e.EMPLOYEE_ID = d.MANAGER_ID
+WHERE DATE_SUB(now(),Interval 5 YEAR) > e.HIRE_DATE
+
+--==================================================================================
